@@ -31,14 +31,17 @@ class ModelTrainer:
                 test_array[:,:-1],
                 test_array[:,-1]
             )
-            models = {'Logistic Regression': LogisticRegression(solver='sag', max_iter=1000),
+            models = {'Logistic Regression': LogisticRegression(solver='sag', max_iter=10000),
               'KNN': KNeighborsClassifier(weights='distance'),
               'Decision Tree': DecisionTreeClassifier(),
               'Random Forest': RandomForestClassifier()}
-            
+            params = {'Logistic Regression': {'C': [0.1, 1, 10]},
+              'KNN': {'n_neighbors': [3, 5, 7]},
+              'Decision Tree': {'criterion': ['gini', 'entropy'], 'max_depth': [3, 5, 7]},
+              'Random Forest': {'n_estimators': [10, 50, 100], 'max_features': ['sqrt', 'log2']}}
 
             model_report:dict=evaluate_models(X_train=X_train,y_train=y_train,X_test=X_test,y_test=y_test,
-                                             models=models)
+                                              models=models,param=params)
             
             ## To get best model score from dict
             best_model_score = max(sorted(model_report.values()))
