@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html >
+
+
+<style>
+  .clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+    }
+  .login{
+    width: 70% ; 
+    margin: 0 auto ;
+  }
+  /* padding : top right bottom left
+  margin : top right bottom left */ 
+  .parent{
+    width: 100% ;
+    padding: 15px  ;
+    border: 2px solid #000;
+  }
+  .child1{
+    width: 40% ;
+    margin-right: 10px;
+    float:left;
+     }
+  .child2{
+    width: 58% ;
+    padding-top: 20% ;
+    float:left;
+   }
+</style>
+  
+</head>
+
+<body>
+ <div class="login">
+	<h1>Solar Panel Fault Prediction</h1>
+<section class="parent clearfix"> 
+  
+
+  <section class="child1">
+    <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict_datapoint')}}" method="post">
+      <input type="text" name="Ipv" placeholder="Ipv" required="required" /><br>
+    	<input type="text" name="Vpv" placeholder="Vpv" required="required" /><br>
+        <input type="text" name="Vdc" placeholder="Vdc" required="required" /><br>
+        <input type="text" name="ia" placeholder="ia" required="required" /><br>
+        <input type="text" name="ib" placeholder="ib" required="required" /><br>
+        <input type="text" name="ic" placeholder="ic" required="required" /><br>
+        <input type="text" name="va" placeholder="va" required="required" /><br>
+        <input type="text" name="vb" placeholder="vb" required="required" /><br>
+        <input type="text" name="vc" placeholder="vc" required="required" /><br>
+        <input type="text" name="Iabc" placeholder="Iabc" required="required" /><br>
+        <input type="text" name="If" placeholder="If" required="required" /><br>
+        <input type="text" name="Vabc" placeholder= "Vabc" required="required" /><br>
+        <input type="text" name="Vf" placeholder="Vf" required="required" /><br>
+
+       
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+  </section>
+  <section class="child2">
+  
+    <h2>
+      The Solar Panel prediction is {{results}}
+   </h2>
+  </section>
+</section>
+     
+
+   <br>
+   <br>
+  
+   
+ </div>
+
+
+</body>
+</html>
