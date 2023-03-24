@@ -5,4 +5,5 @@ matplotlib
 scikit-learn
 dill
 flask
--e .
+gunicorn
+#-e .
