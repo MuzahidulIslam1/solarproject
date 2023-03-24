@@ -6,4 +6,4 @@ scikit-learn
 dill
 flask
 gunicorn
-#-e .
+-e .
