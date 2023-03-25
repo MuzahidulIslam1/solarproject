@@ -85,25 +85,13 @@ jobs:
       - name: Pull latest images
         run: |
          docker pull ${{secrets.AWS_ECR_LOGIN_URI}}/${{ secrets.ECR_REPOSITORY_NAME }}:latest
-#       - name: Stop and remove sensor container if running
+#       - name: Stop and remove solar container if running
 #         run: |
-#          docker ps -q --filter "name=sensor" | grep -q . && docker stop sensor && docker rm -fv sensor
+#          docker ps -q --filter "name=solar" | grep -q . && docker stop solar && docker rm -fv solar
        
-          # (Optional, default: "./")
-          # Dockerfile directory.
-          # For example, if you have a Dockerfile in the root of your project, leave it as follows:
-        dockerfile_directory: ./
-
-          # (Optional, default: "Dockerfile")
-          # Dockerfile name.
-        dockerfile_name: Dockerfile
-
-          # (Optional, default: "")
-          # Additional options of docker build command.
-        docker_options: "--no-cache"
-
-          # (Optional, default: "web")
-          # Select the process type for which you want the docker container to be uploaded.
-          # By default, this argument is set to "web".
-          # For more information look at https://devcenter.heroku.com/articles/process-model
-        process_type: web
+      - name: Run Docker Image to serve users
+        run: |
+         docker run -d -p 80:8080 --name=solar  -e 'AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}' -e 'AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}' -e 'AWS_REGION=${{ secrets.AWS_REGION }}'  ${{secrets.AWS_ECR_LOGIN_URI}}/${{ secrets.ECR_REPOSITORY_NAME }}:latest
+      - name: Clean previous images and containers
+        run: |
+         docker system prune -f
