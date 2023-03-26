@@ -1,8 +1,6 @@
-FROM python:3.8.5-slim-buster
-RUN apt update -y && apt install awscli -y
-WORKDIR /app
-
+FROM python:3.7
 COPY . /app
+WORKDIR /app
 RUN pip install -r requirements.txt
-
-CMD ["python3", "application.py"]
+EXPOSE $PORT
+CMD gunicorn --workers=4 --bind 0.0.0.0:$PORT application:application
