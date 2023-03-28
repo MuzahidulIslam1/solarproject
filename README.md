@@ -53,16 +53,18 @@ The problem is to reduce the cost due to unnecessary repairs. So it is required 
 ## How to run?
 To run in cloud you will need AWS account 
 
-## Data Collections
-![image](https://user-images.githubusercontent.com/57321948/193536736-5ccff349-d1fb-486e-b920-02ad7974d089.png)
+## Project Architecture
+![ARCHITECTURE (1)](https://user-images.githubusercontent.com/95979968/228357087-c8d7ec12-05ef-401e-88cc-8df9d12d1f95.png)
 
 
-## Project Archietecture
+## Machine Learning pipelines and Archietecture
 ![image](https://user-images.githubusercontent.com/57321948/193536768-ae704adc-32d9-4c6c-b234-79c152f756c5.png)
 
 
 ## Deployment Archietecture
-![image](https://user-images.githubusercontent.com/57321948/193536973-4530fe7d-5509-4609-bfd2-cd702fc82423.png)
+![cicd-01](https://user-images.githubusercontent.com/95979968/228358206-09497056-f90b-44db-b5af-04b3b139e27f.jpg)
+
+
 
 
 Creating conda environment
