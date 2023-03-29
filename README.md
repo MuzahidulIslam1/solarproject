@@ -117,11 +117,11 @@ git push origin main
 To check remote url 
 ```
 git remote -v 
-
-To run in local system
 ```
-python application.py 
+To run in local system
 
+python application.py 
+```
 To retrain the model if there is model drift
 ``` 
 python src/components/data_ingestion.py
